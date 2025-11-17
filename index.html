@@ -13,30 +13,31 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f8f9fa;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
+            padding: 20px;
         }
 
-        /* Partículas flotantes */
+        /* Partículas sutiles */
         .particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.3);
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 107, 157, 0.1);
             border-radius: 50%;
-            animation: float 15s infinite;
+            animation: float 20s infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-100px) translateX(50px); }
-            50% { transform: translateY(-200px) translateX(-30px); }
-            75% { transform: translateY(-100px) translateX(-60px); }
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            25% { transform: translateY(-80px) translateX(40px); opacity: 0.5; }
+            50% { transform: translateY(-150px) translateX(-20px); opacity: 0.3; }
+            75% { transform: translateY(-80px) translateX(-50px); opacity: 0.5; }
         }
 
         .container {
@@ -47,23 +48,25 @@
 
         /* Sobre */
         .envelope {
-            width: 320px;
-            height: 200px;
+            width: 90vw;
+            max-width: 450px;
+            height: 280px;
             position: relative;
             cursor: pointer;
             transition: transform 0.6s;
         }
 
         .envelope:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .envelope-base {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: white;
+            border: 2px solid #ffe4e1;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.15);
             position: relative;
             overflow: hidden;
         }
@@ -74,9 +77,9 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-top: 120px solid #e8eaf6;
+            border-left: 50% solid transparent;
+            border-right: 50% solid transparent;
+            border-top: 160px solid #fff5f5;
             transform-origin: top;
             transition: transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 3;
@@ -108,9 +111,8 @@
             bottom: -60px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
+            color: #666;
             font-size: 16px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             animation: pulse 2s infinite;
             white-space: nowrap;
         }
@@ -126,8 +128,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            width: 300px;
-            height: 400px;
+            width: 90vw;
+            max-width: 500px;
+            height: 70vh;
+            max-height: 650px;
             opacity: 0;
             transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             transform-style: preserve-3d;
@@ -135,7 +139,7 @@
         }
 
         .photo-container.visible {
-            transform: translate(-50%, -50%) scale(1) translateY(-50px);
+            transform: translate(-50%, -50%) scale(1);
             opacity: 1;
         }
 
@@ -158,7 +162,7 @@
             position: absolute;
             backface-visibility: hidden;
             border-radius: 15px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
 
@@ -212,7 +216,7 @@
 
         .back-text {
             width: 50%;
-            padding: 30px 20px;
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -222,25 +226,84 @@
         .back-text h2 {
             color: #ff6b9d;
             margin-bottom: 15px;
-            font-size: 22px;
+            font-size: 24px;
         }
 
         .back-text p {
             color: #555;
-            line-height: 1.6;
-            font-size: 13px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .envelope {
+                height: 220px;
+            }
+
+            .envelope-flap {
+                border-top-width: 130px;
+            }
+
+            .heart {
+                font-size: 40px;
+            }
+
+            .photo-container {
+                height: 80vh;
+                max-height: none;
+            }
+
+            .back-text h2 {
+                font-size: 20px;
+            }
+
+            .back-text p {
+                font-size: 13px;
+            }
+
+            .back-text {
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope {
+                height: 180px;
+            }
+
+            .envelope-flap {
+                border-top-width: 110px;
+            }
+
+            .heart {
+                font-size: 36px;
+            }
+
+            .instruction {
+                font-size: 14px;
+                bottom: -50px;
+            }
+
+            .back-text h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .back-text p {
+                font-size: 12px;
+            }
         }
 
         .click-hint {
             position: absolute;
-            bottom: -40px;
+            bottom: -50px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
+            color: #999;
             font-size: 14px;
             opacity: 0;
             transition: opacity 0.5s;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .photo-container.visible .click-hint {
@@ -258,13 +321,13 @@
 <body>
     <!-- Partículas decorativas -->
     <script>
-        for(let i = 0; i < 20; i++) {
+        for(let i = 0; i < 15; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.width = (Math.random() * 10 + 5) + 'px';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.width = (Math.random() * 6 + 4) + 'px';
             particle.style.height = particle.style.width;
             document.body.appendChild(particle);
         }
@@ -283,13 +346,13 @@
             <div class="photo-card" id="photoCard">
                 <div class="photo-front">
                     <div class="photo-placeholder">
-                        <img src="us.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    <img src="us.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                     </div>
                     <div class="photo-caption">Nosotros ❤️</div>
                 </div>
                 <div class="photo-back">
                     <div class="back-photo">
-                       <img src="she.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    <img src="she.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                     </div>
                     <div class="back-text">
                         <h2>Mi Amor</h2>
